@@ -35,7 +35,9 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'simple_form'
 gem 'bootstrap-sass'
-
+gem 'ckeditor', '~> 4.1'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
+gem 'rails-ujs', '~> 0.1.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
