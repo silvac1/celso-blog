@@ -1,20 +1,18 @@
 class PostsController < ApplicationController
-  before_action :find_post, only: [:edit, :update, :show, :delete]
+  before_action :find_post, only: [:edit, :update, :show, :destroy]
   before_action :authenticate_admin!, except: [:index, :show]
 
   def index
     @posts = Post.all
   end
 
-
   def new
-    @post = Post.new
+    @post = current_admin.posts.new
   end
 
-
   def create
-    @post = Post.new
-    if @post.save(post_params)
+    @post = current_admin.posts.new(post_params)
+    if @post.save
       flash[:notice] = "Successfully created post!"
       redirect_to post_path(@post)
     else
@@ -31,7 +29,7 @@ class PostsController < ApplicationController
   def update
     if @post.update_attributes(post_params)
       flash[:notice] = "Successfully updated post!"
-      redirect_to post_path(@posts)
+      redirect_to @post
     else
       flash[:alert] = "Error updating post!"
       render :edit
@@ -59,6 +57,6 @@ class PostsController < ApplicationController
   end
 
   def find_post
-    @post = Post.find(params[:id])
+    @post = current_admin.posts.find(params[:id])
   end
 end
