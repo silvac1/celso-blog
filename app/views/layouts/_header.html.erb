@@ -4,19 +4,24 @@
       <div class="menu col-xs-8">
         <% if admin_signed_in? %>
           <ul>
+
             <li><%= link_to 'Welcome', root_path %></li>
             <li><%= link_to "New Post", new_post_path %></li>
             <li><%= link_to "My Posts", posts_path %></li>
-            <li><%= link_to "My Account", edit_admin_registration_path %></li>
             <li><a href="contact">Contact</a></li>
+            <li><%= link_to "My Account", edit_admin_registration_path %></li>
+
           </ul>
+
         <% else %>
           <li><%= link_to 'Login', new_admin_session_path  %></li>
         <% end %>
+
       </div>
       <div class="name col-xs-4">
+
         <% if admin_signed_in? %>
-            <h1>Logout</h1>
+          <ul><h1><a href="https://celso-portfolio.herokuapp.com/">Logout</a></h1></ul>
         <% end %>
       </div>
     </div>
